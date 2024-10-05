@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-zinc-900">
+  <div class="p-10 text-white">
+    <div class="flex justify-end w-full"><a class="bg-red-500 rounded-lg py-2 px-5 mt-4 inline-block" href="/logout"><button>Logout</button></a></div>
+    <h1 class="text-xl font-bold"> <span class="text-white">Hello , </span><span class="text-emerald-500 tracking-tighter"><%= user.name  %>👋</span></h1>
+    <h2 class="text-xl text-white mt-4">Create Post</h2>
+    <form action="/post" method="post" class="">
+      <textarea name="content" placeholder="Express Yourself" class=" block w-1/3 resize-none mt-4 bg-zinc-800 border border-zinc-900 text-sm rounded-lg p-2 outline-none"></textarea>
+      <input type="submit" value="Post" class="bg-teal-500 rounded-lg py-2 px-5 mt-4  block w-40">
+    </form>
+    <div class="posts">
+      <h3 class="mt-20 text-zinc-400 ">Your Posts</h3>
+      <div class="postcontainer mt-5 ">
+        <% user.posts.forEach(function (post) { %>
+            <div class="post w-1/3 p-5 border-[1px] border-zinc-700 rounded-xl bg-zinc-800 mb-4">
+                <h4 class="text-blue-500 mb-2">@<%= user.username %></h4>
+                <h4 class="tracking-tight"><%= post.content %></h4>
+                <div class="btns flex mt-2 gap-4">
+                  <a href="" class="text-blue-500 text-sm">Like</a>
+                  <a href="" class="text-zinc-400 text-sm">Edit</a>
+                </div>
+              </div>
+       <% }) %>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
